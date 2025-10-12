@@ -2,7 +2,7 @@
 function Header() {
     return (
         <header className="header">
-            <h1>First React Pizza Company</h1>
+            <h1>First React Pizza Co.</h1>
         </header>
     );
 }
@@ -12,18 +12,32 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-            <Pizza />
+            <Pizza
+                name="Pizza Spinaci"
+                ingredients="Tomato, mozarella, spinach, and ricotta cheese"
+                photoName="pizzas/spinaci.jpg"
+                price={10}
+            />
+            <Pizza
+                name="Pizza Funghi"
+                ingredients="Tomato, mushrooms, spinach, and ricotta cheese"
+                price={12}
+                photoName="pizzas/funghi.jpg"
+            />
         </main>
     );
 }
 
 // ANCHOR Pizza Component
-function Pizza() {
+function Pizza(props) {
     return (
-        <div>
-            <img src="pizzas/spinaci.jpg" alt="" />
-            <h3>Pizza Spinaci</h3>
-            <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+        <div className="pizza">
+            <img src={props.photoName} alt="" />
+            <div>
+                <h3>{props.name}</h3>
+                <p>{props.ingredients}</p>
+                <span>{props.price + 2}</span>
+            </div>
         </div>
     );
 }
@@ -45,7 +59,7 @@ function Footer() {
 // ANCHOR THE APP
 function App() {
     return (
-        <div className="Container">
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
