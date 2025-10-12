@@ -1,15 +1,19 @@
 // ANCHOR Header Component
 function Header() {
-    return <h1>First React Pizza Company</h1>;
+    return (
+        <header className="header">
+            <h1>First React Pizza Company</h1>
+        </header>
+    );
 }
 
 // ANCHOR Menu Component
 function Menu() {
     return (
-        <div>
+        <main className="menu">
             <h2>Our Menu</h2>
             <Pizza />
-        </div>
+        </main>
     );
 }
 
@@ -18,7 +22,7 @@ function Pizza() {
     return (
         <div>
             <img src="pizzas/spinaci.jpg" alt="" />
-            <h1>Pizza Spinaci</h1>
+            <h3>Pizza Spinaci</h3>
             <p>Tomato, mozarella, spinach, and ricotta cheese</p>
         </div>
     );
@@ -32,14 +36,16 @@ function Footer() {
     const isOpen = hour >= openHour && hour <= closeHour;
 
     return (
-        <footer>{new Date().toLocaleTimeString()} we are currently open</footer>
+        <footer className="footer">
+            {new Date().toLocaleTimeString()} we are currently open
+        </footer>
     );
 }
 
 // ANCHOR THE APP
 function App() {
     return (
-        <div className="App">
+        <div className="Container">
             <Header />
             <Menu />
             <Footer />
