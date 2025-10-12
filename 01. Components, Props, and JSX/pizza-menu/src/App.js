@@ -54,15 +54,20 @@ function Header() {
 
 // ANCHOR Menu Component
 function Menu() {
+    const pizzas = pizzaData;
+    // const pizzas = [];
+    const numPizzas = pizzas.length;
+
     return (
         <main className="menu">
             <h2>Our Menu</h2>
-
-            <ul className="pizzas">
-                {pizzaData.map((pizza) => (
-                    <Pizza pizzaObj={pizza} key={pizza.name} />
-                ))}
-            </ul>
+            {numPizzas > 0 && (
+                <ul className="pizzas">
+                    {pizzaData.map((pizza) => (
+                        <Pizza pizzaObj={pizza} key={pizza.name} />
+                    ))}
+                </ul>
+            )}
         </main>
     );
 }
@@ -90,7 +95,20 @@ function Footer() {
 
     return (
         <footer className="footer">
-            {new Date().toLocaleTimeString()} we are currently open
+            {isOpen && (
+                <div className="order">
+                    <p>We are open until {closeHour}:00 </p>
+                    <button className="btn">Order</button>
+                </div>
+            )}
+            {!isOpen && (
+                <div className="order">
+                    <p>We are closed </p>
+                    <button disabled className="btn">
+                        Order
+                    </button>
+                </div>
+            )}
         </footer>
     );
 }
