@@ -93,33 +93,28 @@ function Pizza(props) {
 }
 
 // ANCHOR Footer Component
+function Order(props) {
+    return (
+        <div className="order">
+            <p>
+                We are open until {props.closeHour}:00 come visit us or order
+                online
+            </p>
+            <button className="btn">Order</button>
+        </div>
+    );
+}
+
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 20;
+    const openHour = 12;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
-
-    /* if (!isOpen) {
-        return (
-            <footer className="footer">
-                <p>
-                    We are happy to welcome you between {openHour}:00 and{" "}
-                    {closeHour}:00
-                </p>
-            </footer>
-        );
-    } */
 
     return (
         <footer className="footer">
             {isOpen ? (
-                <div className="order">
-                    <p>
-                        We are open until {closeHour}:00 come visit us or order
-                        online
-                    </p>
-                    <button className="btn">Order</button>
-                </div>
+                <Order closeHour={closeHour} />
             ) : (
                 <p>
                     We are happy to welcome you between {openHour}:00 and{" "}
