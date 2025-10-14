@@ -75,30 +75,30 @@ function Menu() {
 }
 
 // ANCHOR Pizza Component
-function Pizza(props) {
-    if (props.pizzaObj.soldOut) {
+function Pizza({ pizzaObj }) {
+    if (pizzaObj.soldOut) {
         return null;
     }
 
     return (
         <li className="pizza">
-            <img src={props.pizzaObj.photoName} alt="" />
+            <img src={pizzaObj.photoName} alt="" />
             <div>
-                <h3>{props.pizzaObj.name}</h3>
-                <p>{props.pizzaObj.ingredients}</p>
-                <span>{props.pizzaObj.price + 2}</span>
+                <h3>{pizzaObj.name}</h3>
+                <p>{pizzaObj.ingredients}</p>
+                <span>{pizzaObj.price + 2}</span>
             </div>
         </li>
     );
 }
 
 // ANCHOR Footer Component
-function Order(props) {
+function Order({ closeHour, openHour }) {
     return (
         <div className="order">
             <p>
-                We are open until {props.closeHour}:00 come visit us or order
-                online
+                We are open from {openHour}:00 to {closeHour}:00 come visit us
+                or order online
             </p>
             <button className="btn">Order</button>
         </div>
@@ -107,14 +107,14 @@ function Order(props) {
 
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 12;
+    const openHour = 1;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
 
     return (
         <footer className="footer">
             {isOpen ? (
-                <Order closeHour={closeHour} />
+                <Order closeHour={closeHour} openHour={openHour} />
             ) : (
                 <p>
                     We are happy to welcome you between {openHour}:00 and{" "}
