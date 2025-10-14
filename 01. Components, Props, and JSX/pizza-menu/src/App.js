@@ -76,6 +76,10 @@ function Menu() {
 
 // ANCHOR Pizza Component
 function Pizza(props) {
+    if (props.pizzaObj.soldOut) {
+        return null;
+    }
+
     return (
         <li className="pizza">
             <img src={props.pizzaObj.photoName} alt="" />
@@ -91,9 +95,20 @@ function Pizza(props) {
 // ANCHOR Footer Component
 function Footer() {
     const hour = new Date().getHours();
-    const openHour = 12;
+    const openHour = 20;
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
+
+    /* if (!isOpen) {
+        return (
+            <footer className="footer">
+                <p>
+                    We are happy to welcome you between {openHour}:00 and{" "}
+                    {closeHour}:00
+                </p>
+            </footer>
+        );
+    } */
 
     return (
         <footer className="footer">
