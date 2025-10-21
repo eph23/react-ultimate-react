@@ -1,0 +1,23 @@
+{
+  "hash": "68ab8061",
+  "browserHash": "a03a344b",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "72c86ca7",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "3fddba31",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-ZAXO7EU5": {
+      "file": "chunk-ZAXO7EU5.js"
+    }
+  }
+}
