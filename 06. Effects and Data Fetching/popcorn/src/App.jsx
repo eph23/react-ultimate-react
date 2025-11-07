@@ -144,6 +144,22 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
     useEffect(
         function () {
+            function callBack(event) {
+                if (event.code === "Escape") {
+                    onCloseMovie();
+                }
+            }
+
+            document.addEventListener("keydown", callBack);
+            return function () {
+                document.removeEventListener("keydown", callBack);
+            };
+        },
+        [onCloseMovie]
+    );
+
+    useEffect(
+        function () {
             async function getMovieDetails(params) {
                 setIsLoading(true);
                 const res = await fetch(
@@ -339,7 +355,7 @@ function ErrorMessage({ message }) {
 const KEY = "2e3692f4";
 
 export default function App() {
-    const [query, setQuery] = useState("hulk");
+    const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [watched, setWatched] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -398,6 +414,7 @@ export default function App() {
                 return;
             }
 
+            handleCloseMovie();
             fetchMovies();
 
             return function () {
