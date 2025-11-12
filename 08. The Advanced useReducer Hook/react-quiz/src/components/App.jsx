@@ -4,11 +4,12 @@ import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
-import Question from "./Question";
+import Question from "./Options";
 
 const initialState = {
     questions: [],
     status: "loading",
+    index: 1,
 };
 
 function reducer(state, action) {
@@ -31,7 +32,10 @@ function reducer(state, action) {
 }
 
 function App() {
-    const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+    const [{ questions, status, index }, dispatch] = useReducer(
+        reducer,
+        initialState
+    );
 
     const numQuestions = questions.length;
 
@@ -51,10 +55,12 @@ function App() {
                 {status === "ready" && (
                     <StartScreen
                         numQuestions={numQuestions}
-                        dispatch={ dispatch }
+                        dispatch={dispatch}
                     />
                 )}
-                {status === "active" && <Question />}
+                {status === "active" && (
+                    <Question question={questions[index]} />
+                )}
             </Main>
         </div>
     );
