@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
@@ -43,12 +43,7 @@ function App() {
                     <Route path="app" element={<AppLayout />}>
                         <Route
                             index
-                            element={
-                                <CityList
-                                    cities={cities}
-                                    isLoading={isLoading}
-                                />
-                            }
+                            element={<Navigate replace to="cities" />}
                         />
                         <Route
                             path="cities"
