@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import CityList from "./components/CityList";
 import City from "./components/City";
 import CountryList from "./components/CountryList";
+import Form from "./components/Form";
 
 const BASE_URL = "http://localhost:900";
 function App() {
@@ -68,7 +69,7 @@ function App() {
                             }
                         ></Route>
                         <Route path="cities/:id" element={<City />}></Route>
-                        <Route path="form" element={<p>Form</p>}></Route>
+                        <Route path="form" element={<Form />}></Route>
                     </Route>
                     <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
