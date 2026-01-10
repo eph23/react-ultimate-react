@@ -1,10 +1,23 @@
+import { pizzaData } from "../public/data";
 
-function App() {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  )
+function Pizza() {
+    return (
+        <div>
+            <img src="pizzas/funghi.jpg" alt="funghi" />
+            <h1>Pizza Funghi</h1>
+            <p>Tomato, mozarella, mushrooms, and onion</p>
+        </div>
+    );
 }
 
-export default App
+function App() {
+    return (
+        <div>
+            <Pizza />
+            <Pizza />
+            <Pizza />
+        </div>
+    );
+}
+
+export default App;
