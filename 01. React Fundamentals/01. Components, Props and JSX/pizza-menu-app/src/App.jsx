@@ -2,7 +2,7 @@ import { pizzaData } from "../public/data";
 
 function Header() {
     return (
-        <header>
+        <header className="header">
             <h1>React Pizza Co.</h1>
         </header>
     );
@@ -10,10 +10,10 @@ function Header() {
 
 function Menu() {
     return (
-        <div>
+        <main className="menu">
             <h2>Our Menu</h2>
             <Pizza />
-        </div>
+        </main>
     );
 }
 function Footer() {
@@ -29,7 +29,7 @@ function Footer() {
     } */
 
     return (
-        <footer>
+        <footer className="footer">
             <p>
                 {new Date().toLocaleTimeString()} We are currently{" "}
                 {isOpen ? "OPEN" : "CLOSED"}
@@ -42,7 +42,7 @@ function Pizza() {
     return (
         <div>
             <img src="pizzas/funghi.jpg" alt="funghi" />
-            <h1>Pizza Funghi</h1>
+            <h3>Pizza Funghi</h3>
             <p>Tomato, mozarella, mushrooms, and onion</p>
         </div>
     );
@@ -50,7 +50,7 @@ function Pizza() {
 
 function App() {
     return (
-        <div>
+        <div className="container">
             <Header />
             <Menu />
             <Footer />
