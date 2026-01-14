@@ -27,35 +27,6 @@ function Menu() {
         </main>
     );
 }
-function Footer() {
-    const hour = new Date().getHours();
-    const openHour = 12;
-    const closeHour = 22;
-    const isOpen = hour >= openHour && hour <= closeHour;
-
-    if (!isOpen) {
-        return (
-            <footer>
-                <p>
-                    We are happy to welcome you between {openHour}:00 and{" "}
-                    {closeHour}:00
-                </p>
-            </footer>
-        );
-    }
-
-    return (
-        <footer className="footer">
-            <div className="order">
-                <p>
-                    We are open until {closeHour}:00. Come visit us or order
-                    online
-                </p>
-                <button className="btn">Order</button>
-            </div>
-        </footer>
-    );
-}
 
 function Pizza({ pizzaObj }) {
     if (pizzaObj.soldOut) return null;
@@ -69,6 +40,38 @@ function Pizza({ pizzaObj }) {
                 <span>{pizzaObj.price}</span>
             </div>
         </li>
+    );
+}
+
+function Footer() {
+    const hour = new Date().getHours();
+    const openHour = 20;
+    const closeHour = 22;
+    const isOpen = hour >= openHour && hour <= closeHour;
+
+    return (
+        <footer className="footer">
+            {isOpen ? (
+                <Order closeHour={closeHour} openHour={openHour} />
+            ) : (
+                <p>
+                    We are happy to welcome you between {openHour}:00 and
+                    {closeHour}:00
+                </p>
+            )}
+        </footer>
+    );
+}
+
+function Order(prop) {
+    return (
+        <div className="order">
+            <p>
+                We are open until {prop.closeHour}:00. Come visit us or order
+                online
+            </p>
+            <button className="btn">Order</button>
+        </div>
     );
 }
 
