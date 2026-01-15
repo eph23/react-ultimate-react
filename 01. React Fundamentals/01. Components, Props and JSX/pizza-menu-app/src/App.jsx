@@ -15,12 +15,20 @@ function Menu() {
     return (
         <main className="menu">
             <h2>Our Menu</h2>
+
             {numPizzas > 0 ? (
-                <ul className="pizzas">
-                    {pizzaData.map((pizza) => (
-                        <Pizza key={pizza.name} pizzaObj={pizza} />
-                    ))}
-                </ul>
+                <>
+                    <p>
+                        Authentic Italian Cuisine. 6 creative dishes to choose
+                        from. All from our stone oven, all organic, all
+                        delicious.
+                    </p>
+                    <ul className="pizzas">
+                        {pizzaData.map((pizza) => (
+                            <Pizza key={pizza.name} pizzaObj={pizza} />
+                        ))}
+                    </ul>
+                </>
             ) : (
                 <p>We are still working on our menus, please comeback later</p>
             )}
