@@ -14,14 +14,14 @@ function App() {
         if (step === 1) {
             return;
         } else {
-            setStep(step - 1);
+            setStep((s) => s - 1);
         }
     }
     function handleNext() {
         if (step >= messages.length) {
             return;
         } else {
-            setStep(step + 1);
+            setStep((s) => s + 1);
         }
     }
 
@@ -31,7 +31,7 @@ function App() {
 
     return (
         <>
-            <button className="close" onClick={handleClose}>
+            <button className="close" onClick={() => handleClose()}>
                 &times;
             </button>
             {isOpen && (
