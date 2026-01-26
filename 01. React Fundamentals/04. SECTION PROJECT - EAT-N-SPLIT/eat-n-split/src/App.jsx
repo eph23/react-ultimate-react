@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./App.css";
 import INITIAL_FRIENDS from "./App";
 
@@ -44,8 +46,6 @@ function FormAddFriend() {
 
             <label>🖼️ Image URL</label>
             <input type="text" />
-
-            <Button>Add</Button>
         </form>
     );
 }
@@ -75,16 +75,29 @@ function FormSplitBill() {
     );
 }
 
-function Button({ children }) {
-    return <button className="button">{children}</button>;
+function Button({ children, onClick }) {
+    return (
+        <button className="button" onClick={onClick}>
+            {children}
+        </button>
+    );
 }
 
 function App() {
+    const [showFriend, setShowFriend] = useState(false);
+
+    function handleShowAddFriend() {
+        setShowFriend((show) => !show);
+    }
+
     return (
         <div className="app">
             <div className="sidebar">
                 <FriendsList />
-                <FormAddFriend />
+                {showFriend && <FormAddFriend />}
+                <Button onClick={handleShowAddFriend}>
+                    {showFriend ? "Close" : "Add Friend"}
+                </Button>
             </div>
             <FormSplitBill />
         </div>
